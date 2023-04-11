@@ -1,7 +1,7 @@
 # AG_Vector
 Calculator of Vector
 
-🛠️ **Working in progress** 🛠️
+🛠️ **Work in progress** 🛠️
 
 # History 📜
 
