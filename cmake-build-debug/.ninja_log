@@ -1,0 +1,7 @@
+# ninja log v5
+15	846	7019061749665734	CMakeFiles/AlgGauss.dir/classes/Razionale.cpp.obj	ec74be76b86c372b
+25	128	7018154811958843	CMakeFiles/AlgGauss.dir/classes/Divisore.cpp.obj	9c0ae0b919d0c646
+5	1053	7019061751763727	CMakeFiles/AlgGauss.dir/main.cpp.obj	753ec7d6fa261799
+4	534	7019033406334686	CMakeFiles/AlgGauss.dir/classes/Matrice.cpp.obj	852b354dccb5f55f
+1054	1316	7019061754388980	AlgGauss.exe	ec32ba2e9f4ff595
+3	805	7023239620597158	build.ninja	5e040f0e60fd8e1a
