@@ -28,6 +28,12 @@ public:
      */
     Razionale( int n, int d ) {
 
+        if ( d == 0 )
+            throw (string)"den-zero";
+
+        this->n = n;
+        this->d = d;
+        /*
         if ( n >= d ) {
             if ( n % d == 0 ) {
                 this->n = n / d;
@@ -44,8 +50,37 @@ public:
                 this->n = n;
                 this->d = d;
             }
-        }
+        }*/
         sep     = '/';
+    }
+
+    /**
+     * Constructor for inline-command
+     * @param s
+     */
+    Razionale( string s ) {
+        bool den = false;
+        int d = 0;
+        for ( int i = 0; i < s.length(); i++ ) {
+            if ( s.at(i) == '/' ) {
+                this->n = stoi( s.substr( 0, i - 1 ) );
+                den = true;
+                d = ++i;
+                break;
+            }
+        }
+
+        if ( den ) {
+            if ( stoi( s.substr( d ) ) == 0 )
+                throw (string)"den-zero";
+
+            this->d = stoi( s.substr( d ) );
+        } else {
+            this->n = stoi( s );
+            this->d = 1;
+        }
+
+        this->sep = '/';
     }
 
     /**
@@ -122,6 +157,8 @@ public:
         return ret;
     }
 
+
+
 };
 
 inline int findChar( string s ) {
@@ -130,6 +167,8 @@ inline int findChar( string s ) {
             return i;
     return 0;
 }
+
+
 
 /*ostream& operator<<( ostream& dest, Razionale& o ) {
     dest << o.getN() << '/' << o.getN() << endl;

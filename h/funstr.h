@@ -18,15 +18,19 @@ string sanitize_str( string s, int i ) {
 string fstr( string s, int i, int f ) {
     switch (f) {
         case 1: {
-            string prova = "";
+            // string tmp = "";
+            int c = 0;
+            Razionale r = Razionale();
             if ( s.at(i) == '(' ) {
                 // check if the vector is written manually
                 for ( int j = i + 1; j < s.length(); j++ ) {
                     if ( s.at(j) == ')' )
                         break;
-
                     if ( s.at(j) != ',' ) {
-                        // substr of th efirst number :: x1, x2, x3
+                        // substr of the first number :: x1, x2, x3
+                        c = j;
+                    } else {
+
                     }
                 }
             } else if ( s.at(i) == '<' ) {
