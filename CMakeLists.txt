@@ -3,4 +3,4 @@ project(AlgGauss)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(AlgGauss main.cpp classes/Razionale.cpp classes/Matrice.cpp h/gblfun.h)
+add_executable(AlgGauss main.cpp classes/Razionale.h classes/Matrice.cpp h/gblfun.h)

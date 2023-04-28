@@ -4,8 +4,9 @@
 
 #ifndef ALGGAUSS_GBLFUN_H
 #define ALGGAUSS_GBLFUN_H
-#include "../classes/Razionale.cpp"
-using namespace std;
+#include "funstr.h"
+string p = "\n> ";  // Pre-content line
+string str;         // Line-command
 
 // TODO: FINIRE ALGORTIMO PER TROVARE MCD
 template <typename T>
@@ -38,9 +39,14 @@ void insert_data( Razionale **m, int r, int c ) {
     }
 }
 
+/*
+ * OLD FUNCTION start()
+ *
+
 void start() {
     int row = 0, col = 0;
     bool valid = false;
+
     while ( !valid ) {
         cout << "Inserisci le colonne: ";
         cin >> col;
@@ -68,5 +74,33 @@ void start() {
     inizialize_matrix( matrice, row, col, 0 );
     insert_data( matrice, row, col );
 }
+*/
 
+void do_command( string s ) {
+    string ss = sanitize_str( s, 0 );
+    int f = 0;
+    if ( s.at(0) == '|' && s.at(1) == '|' ) {
+        f = 1;
+        //fstr()
+    }
+
+
+}
+
+void start() {
+    string pre = "Welcome !\n This program can calculate:\n\t- Scalar product\n\t- Vectorial product\n\t- Proiection of a Vector (r^n)\n\nIf you need help type \"-h\" or \"-H\" or \"--help\" ";
+    cout << pre;
+    bool valid = false;
+    while ( !valid ) {
+        try {
+            cout << p;
+            cin >> str;
+            do_command( str );
+        } catch( string e ) {
+            cout << e << endl;
+            valid = false;
+        }
+
+    }
+}
 #endif //ALGGAUSS_GBLFUN_H

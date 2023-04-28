@@ -1,8 +1,6 @@
 //
 // Created by sandr on 29/03/2023.
 //
-#include <iostream>
-using namespace std;
 
 int findChar( string );
 
