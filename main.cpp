@@ -6,13 +6,8 @@ using namespace std;
 
 
 int main() {
-    Razionale r;
-    string s = "-45";
-    cout << stoi( s );
-    cout << s << endl;
-    r = Razionale( s );
-    cout << r;
-    // start();
+
+    start();
 
     return 0;
 }

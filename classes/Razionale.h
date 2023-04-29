@@ -63,7 +63,10 @@ public:
         int d = 0;
         for ( int i = 0; i < s.length(); i++ ) {
             if ( s.at(i) == '/' ) {
-                this->n = stoi( s.substr( 0, i - 1 ) );
+                if ( (i - 1) == 0 )
+                    this->n = (int)s.at( 0 ) - 48;
+                else
+                    this->n = stoi( s.substr( 0, i ) );
                 den = true;
                 d = ++i;
                 break;
@@ -71,12 +74,14 @@ public:
         }
 
         if ( den ) {
-            if ( stoi( s.substr( d ) ) == 0 )
+            int check = ( d == ( s.length() - 1 ) ) ? (int)s.at(d) - 48 : stoi( s.substr( d ) );
+            if ( check == 0 )
                 throw (string)"den-zero";
 
-            this->d = stoi( s.substr( d ) );
+            this->d = check;
         } else {
-            this->n = stoi( s );
+            int check = ( ( s.length() - 1 ) == 0 ) ? (int)s.at(0) - 48 : stoi( s );
+            this->n = check;
             this->d = 1;
         }
 
@@ -113,28 +118,6 @@ public:
         return r;
     }
 
-    friend ostream& operator<<( ostream& dest, Razionale& o ) {
-        dest << o.n << '/' << o.d << endl;
-        return dest;
-    }
-
-    friend istream& operator>>( istream& serc, Razionale& o ) {
-        string s = "", num_s = "", den_s = "";
-        int n = 0, d = 0;
-        serc >> s;
-        int index = findChar( s );
-        if ( !s.empty() ) {
-            for ( int i = 0; i < s.length(); i++ ) {
-                if ( i < index )
-                    num_s.append( &s.at(i) );
-                else if ( i > index )
-                    den_s.append( &s.at(i) );
-            }
-        }
-        o = Razionale( stoi( num_s ), stoi( den_s ) );
-        return serc;
-    }
-
     template <typename T>
     Razionale operator*( const T& o ) {
         Razionale ret;
@@ -152,11 +135,11 @@ public:
     }
 
 
-    Razionale operator=(const Razionale& o ) {
+    /*Razionale operator=(const Razionale& o ) {
         Razionale ret = Razionale( o.n, o.d );
         return ret;
     }
-
+    */
 
 
 };
@@ -168,7 +151,23 @@ inline int findChar( string s ) {
     return 0;
 }
 
+ostream& operator<<( ostream& dest, Razionale& o ) {
+    dest << o.getN() << '/' << o.getD() << endl;
+    return dest;
+}
 
+istream& operator>>( istream& serc, Razionale& o ) {
+    try {
+        string s = "";
+        serc >> s;
+        if ( !s.empty() )
+            o = Razionale( s );
+    } catch ( string e ) {
+        cout << e << ": il denominatore non può essere zero\n";
+    }
+
+    return serc;
+}
 
 /*ostream& operator<<( ostream& dest, Razionale& o ) {
     dest << o.getN() << '/' << o.getN() << endl;

@@ -76,15 +76,44 @@ void start() {
 }
 */
 
-void do_command( string s ) {
-    string ss = sanitize_str( s, 0 );
-    int f = 0;
-    if ( s.at(0) == '|' && s.at(1) == '|' ) {
-        f = 1;
-        //fstr()
+/**
+ * __help()
+ * Manual ...
+ */
+void __help() {
+    string quit;
+    do {
+        cout << "\nYou asked for help ?\n There I am\n";
+        cin >> quit;
+    } while( quit == "q" || quit == "Q" || quit == "QUIT" || quit == "quit" );
+}
+
+/**
+ * Main function
+ * @param s
+ */
+void do_command( string s, int i ) {
+    string ss;
+    try {
+        ss = sanitize_str( s, 0 );
+    } catch( string e ) {
+        cout << e << ": stringa vuota\n";
     }
+    cout << ss << endl;
+    int f = 0;
+    if ( ss == "-h" || ss == "-H" || ss == "--help" )
+        __help();
 
+    if ( ss.at(i) == '|' && ss.at(i + 1) == '|' ) {
+        f = 1;
 
+    } else if ( ss.at(i) == 'p' && ss.at(i + 1) == 'r' )
+        f = 2;
+    else if ( ss.at(i) == '<' )
+        f = 3;
+
+    cout << f << endl;
+    // fstr( f, i);
 }
 
 void start() {
@@ -95,7 +124,7 @@ void start() {
         try {
             cout << p;
             cin >> str;
-            do_command( str );
+            do_command( str, 0 );
         } catch( string e ) {
             cout << e << endl;
             valid = false;
