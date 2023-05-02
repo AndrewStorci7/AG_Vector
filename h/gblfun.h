@@ -76,46 +76,6 @@ void start() {
 }
 */
 
-/**
- * __help()
- * Manual ...
- */
-void __help() {
-    string quit;
-    do {
-        cout << "\nYou asked for help ?\n There I am\n";
-        cin >> quit;
-    } while( quit == "q" || quit == "Q" || quit == "QUIT" || quit == "quit" );
-}
-
-/**
- * Main function
- * @param s
- */
-void do_command( string s, int i ) {
-    string ss;
-    try {
-        ss = sanitize_str( s, 0 );
-    } catch( string e ) {
-        cout << e << ": stringa vuota\n";
-    }
-    cout << ss << endl;
-    int f = 0;
-    if ( ss == "-h" || ss == "-H" || ss == "--help" )
-        __help();
-
-    if ( ss.at(i) == '|' && ss.at(i + 1) == '|' ) {
-        f = 1;
-
-    } else if ( ss.at(i) == 'p' && ss.at(i + 1) == 'r' )
-        f = 2;
-    else if ( ss.at(i) == '<' )
-        f = 3;
-
-    cout << f << endl;
-    // fstr( f, i);
-}
-
 void start() {
     string pre = "Welcome !\n This program can calculate:\n\t- Scalar product\n\t- Vectorial product\n\t- Proiection of a Vector (r^n)\n\nIf you need help type \"-h\" or \"-H\" or \"--help\" ";
     cout << pre;
