@@ -26,6 +26,11 @@ public:
             cin >> R[i];
     }
 
+    Vector( int n, Razionale* A ) {
+        this->n = n;
+        this->R = A;
+    }
+
     // getter and setter
     void setN( int n ) { this->n = n; }
     int getN() { return this->n; }
